@@ -158,7 +158,7 @@ const InvestPage = () => {
         <div className="w-full">
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <TokenHeader
-              tokenName="AppToken"
+              tokenName="ContapToken"
               tokenSymbol="AP"
               currentPrice={`${currentCurrencyInfo.symbol}${(currentPrice * currentCurrencyInfo.rate).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
               priceChange={`${changeAbs >= 0 ? '+' : ''}${formatPhp(Math.abs(changeAbs))}`}
@@ -207,8 +207,8 @@ const InvestPage = () => {
       <InvestOrderSummaryDialog
         isOpen={showOrderDialog}
         onClose={() => setShowOrderDialog(false)}
-        tokenSymbol="AP"
-        tokenName="AppToken"
+        tokenSymbol="CTC"
+        tokenName="ContapToken"
         tokenAmount={parseFloat(tokenAmount) || 0}
         tokenPrice={currentPrice}
         totalCost={parseFloat(priceInput) || 0}

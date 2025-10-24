@@ -48,7 +48,7 @@ const PurchaseSuccessDialog: React.FC<PurchaseSuccessDialogProps> = ({
             Purchase Successful!
           </h3>
           <p className="text-gray-600">
-            You have successfully purchased AppToken
+            You have successfully purchased ContapToken
           </p>
         </div>
 
