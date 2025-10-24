@@ -156,10 +156,11 @@ const ChatsIndexPage = () => {
 
   // Mark messages as read when conversation is opened
   useEffect(() => {
-    if (selectedChatId && user) {
+    if (selectedChatId && user?.id) {
+      console.log('📖 Marking messages as read for conversation:', selectedChatId)
       markAsRead()
     }
-  }, [selectedChatId, user, markAsRead])
+  }, [selectedChatId, user?.id, markAsRead])
 
   const handleNewChat = () => {
     // Start new chat draft mode

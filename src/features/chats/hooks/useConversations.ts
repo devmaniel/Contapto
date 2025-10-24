@@ -124,6 +124,19 @@ export function useConversations(
           refetchSilently()
         }
       )
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'messages'
+        },
+        () => {
+          console.log('📖 Message updated (marked as read), updating conversation list silently')
+          // Use silent refetch to update unread counts
+          refetchSilently()
+        }
+      )
       .subscribe()
 
     return () => {
