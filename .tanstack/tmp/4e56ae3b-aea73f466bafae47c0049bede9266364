@@ -1,0 +1,11 @@
+import UserListPage from '@/app/pages/User/UserViewPage'
+import UserService from '@/services/features/UserService'
+import { createFileRoute } from '@tanstack/react-router'
+
+export const Route = createFileRoute('/user/')({
+  loader: async () => {
+    const userServiceInstance = new UserService()
+    return userServiceInstance.getAllUsers();
+  },
+  component: UserListPage,
+})
