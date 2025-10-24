@@ -8,7 +8,7 @@ interface SearchBarProps {
 
 const SearchBar = ({ 
   placeholder = "Search", 
-  value, 
+  value = "", 
   onChange 
 }: SearchBarProps) => {
   return (

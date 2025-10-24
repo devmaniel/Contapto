@@ -7,10 +7,10 @@ export interface PromoOption {
 
 export const promoOptions: PromoOption[] = [
   {
-    id: 'test-promo',
-    name: '🧪 Test Promo',
-    description: '5 Text Messages (SMS) & 1 Minute of Voice Call for 1 Day',
-    credits: 1,
+    id: 'sulit-10',
+    name: 'Sulit 10',
+    description: '100 Text Messages (SMS) & 1 Hour of Voice Call',
+    credits: 10,
   },
   {
     id: 'the-180',
