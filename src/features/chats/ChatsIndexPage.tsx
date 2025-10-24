@@ -19,7 +19,7 @@ import { useMessages } from './hooks/useMessages'
 import { useCall } from './hooks/useCall'
 import { conversationToChatPreview, supabaseMessageToUIMessage } from './utils/adapters'
 import { normalizePhoneNumber, formatPhoneForDisplay } from './utils/phoneUtils'
-import { sendMessage } from './api/supabaseChats'
+import { sendMessage, markMessagesAsRead } from './api/supabaseChats'
 import { usePromosStore } from '@/shared/stores/usePromosStore'
 import { getPromoSummary, deductFromPromos } from '@/features/recharge/api/supabasePromos'
 import { supabase } from '@/supabase/supabase-api'
@@ -35,6 +35,7 @@ const ChatsIndexPage = () => {
   }
   const [searchValue, setSearchValue] = useState('')
   const [selectedChatId, setSelectedChatId] = useState<string | null>(null)
+  const [highlightedChatId, setHighlightedChatId] = useState<string | null>(null)
   const [draftPhone, setDraftPhone] = useState<string | null>(null)
   const [isDraftValid, setIsDraftValid] = useState<boolean>(false)
   const [isCallMinimized, setIsCallMinimized] = useState(false)
@@ -77,8 +78,7 @@ const ChatsIndexPage = () => {
   const { 
     messages: supabaseMessages, 
     loading: messagesLoading,
-    sendNewMessage, 
-    markAsRead 
+    sendNewMessage
   } = useMessages(selectedChatId, user?.id || null)
 
   // Call management
@@ -142,6 +142,7 @@ const ChatsIndexPage = () => {
 
   useEffect(() => {
     if (draftPhone === null && !selectedChatId && !isInitializing && conversations.length > 0) {
+      console.log('🔄 Auto-selecting first conversation (not marking as read)')
       setSelectedChatId(conversations[0].id)
     }
   }, [draftPhone, selectedChatId, isInitializing, conversations])
@@ -154,13 +155,7 @@ const ChatsIndexPage = () => {
     return converted
   }, [supabaseMessages, user])
 
-  // Mark messages as read when conversation is opened
-  useEffect(() => {
-    if (selectedChatId && user?.id) {
-      console.log('📖 Marking messages as read for conversation:', selectedChatId)
-      markAsRead()
-    }
-  }, [selectedChatId, user?.id, markAsRead])
+  
 
   const handleNewChat = () => {
     // Start new chat draft mode
@@ -341,12 +336,19 @@ const ChatsIndexPage = () => {
     setSearchValue(value)
   }
 
-  const handleSelectChat = (chatId: string) => {
-    console.log('💬 Selecting chat:', chatId)
+  const handleSelectChat = async (chatId: string) => {
+    console.log('💬 User clicked on chat:', chatId)
+    setHighlightedChatId(chatId)
     setSelectedChatId(chatId)
-    // clear draft when selecting a real chat
     setDraftPhone(null)
     setIsDraftValid(false)
+    if (user?.id) {
+      try {
+        await markMessagesAsRead(chatId, user.id)
+      } catch (err) {
+        console.error('Failed to mark messages as read on click:', err)
+      }
+    }
   }
 
   // Handle initiating a call from ChatMainArea
@@ -655,7 +657,7 @@ const ChatsIndexPage = () => {
           ) : (
             <ChatSidebar 
               items={filteredPreviews}
-              selectedChatId={selectedChatId || undefined}
+              selectedChatId={highlightedChatId || undefined}
               onSelectChat={handleSelectChat}
               searchValue={searchValue}
               onSearchChange={handleSearchChange}

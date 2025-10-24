@@ -26,6 +26,7 @@ import { registerSchema } from "@/features/auth/utils/validation"
 import { RegisterErrorAlert, PhoneInput, PasswordRequirements } from "./components"
 import { checkPasswordRequirements } from "./utils/passwordHelpers"
 import backgroundImage from '@/assets/background/26987170_v904-nunny-012-l.jpg'
+import  ContaptoTextLogo  from "../../assets/contapto-text.svg"
 
 const Register = () => {
   const navigate = useNavigate()
@@ -102,10 +103,7 @@ const Register = () => {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-screen max-w-md mx-auto px-4">
-          {/* Brand Name */}
-          <div className="mb-8">
-            <h1 className="text-5xl font-bold text-white tracking-tight">Contapto</h1>
-          </div>
+          
 
           <Card className="w-full">
             <CardHeader className="text-center">
@@ -175,12 +173,13 @@ const Register = () => {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen max-w-md mx-auto px-4">
         {/* Brand Name */}
         <div className="mb-8">
-          <h1 className="text-5xl font-bold text-white tracking-tight">Contapto</h1>
+          
         </div>
 
         <div className={cn("flex flex-col gap-6 w-full")}> 
           <Card>
-            <CardHeader className="text-center">
+            <CardHeader className="text-left">
+              <img src={ContaptoTextLogo} alt="contapto-img" className="h-5 text-white" />
               <CardTitle className="text-xl">Create your account</CardTitle>
               <CardDescription>
                 Register with your phone number and password

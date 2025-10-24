@@ -3,6 +3,7 @@ import { FiMenu } from 'react-icons/fi'
 import { MdToken } from 'react-icons/md'
 import { BiSolidMessageAltDots } from 'react-icons/bi'
 import { IoIosCall } from 'react-icons/io'
+import ContaptoTextSVG from "../../assets/contapto-text.svg"
 import { LogOut, Calendar, Clock } from 'lucide-react'
 import { useSignOut } from '@/features/auth/hooks/useSignOut'
 import { Link, useRouterState } from '@tanstack/react-router'
@@ -64,7 +65,7 @@ const Navbar = () => {
               {/* Logo */}
               <div className="flex items-center gap-2">
                
-                <span className="text-lg font-bold text-gray-900">Contapto</span>
+                <img src={ContaptoTextSVG} alt="contapto-img" className='h-4' />
               </div>
 
               {/* Navigation Links - Hidden on mobile */}

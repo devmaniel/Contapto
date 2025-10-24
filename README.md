@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
+# 📱 Contapto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A modern communication platform with integrated credit-based messaging, calling, and investment features.**
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 What is Contapto?
 
-## React Compiler
+Contapto is an innovative communication platform that combines traditional messaging and calling services with a credit-based economy and investment opportunities. Think of it as a next-generation prepaid communication system where users can message, call, and even invest in platform tokens.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+### 💬 **Real-Time Messaging**
+Connect with other users instantly through our intuitive chat interface. Send messages to anyone using their phone number and maintain multiple conversations simultaneously.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 📞 **Voice Calling**
+Make voice calls to other users directly through the platform. Enjoy crystal-clear audio quality with incoming/outgoing call management and active call controls.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 💳 **Credit System**
+Purchase credits using Philippine Peso (PHP) or cryptocurrency. Credits serve as your communication currency:
+- Buy credits in flexible denominations
+- Use credits for messaging and calling services
+- Transparent pricing with real-time balance tracking
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 🎯 **Promotional Packages**
+Access special promo bundles that offer better value for frequent communicators:
+- Text and call combo packages
+- Flexible promo options for different usage patterns
+- Easy redemption with your available credits
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 📈 **Investment Platform**
+Participate in the platform's economy by investing in Activity Points (AP):
+- Real-time market pricing with interactive charts
+- Multiple timeframe views (1D, 7D, 1M, 3M, 1Y, All-time)
+- Purchase tokens using PHP or Credits
+- Track your investment performance
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🔐 **Secure Authentication**
+Phone-based authentication system ensures secure access to your account and conversations.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🛡️ **System Health Monitoring**
+Built-in health checks ensure platform reliability and transparency about service status.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🎯 Who is Contapto For?
+
+- **Frequent Communicators**: Stay connected with friends, family, and colleagues through affordable messaging and calling
+- **Budget-Conscious Users**: Control your communication spending with a prepaid credit system
+- **Investment Enthusiasts**: Explore micro-investment opportunities within the platform ecosystem
+- **Digital Natives**: Experience a modern, web-based communication platform with a sleek interface
+
+---
+
+## 🚀 Getting Started
+
+1. **Register** with your phone number
+2. **Purchase Credits** using PHP or cryptocurrency
+3. **Start Chatting** or **Make Calls** to other users
+4. **Explore Promos** for better value packages
+5. **Invest** in platform tokens (optional)
+
+---
+
+## 🌐 Technology Stack
+
+Built with modern web technologies for a seamless user experience:
+- **React** + **TypeScript** for robust frontend development
+- **TanStack Router** for smooth navigation
+- **Supabase** for real-time backend and authentication
+- **TailwindCSS** + **shadcn/ui** for beautiful, responsive design
+- **Ethers.js** for cryptocurrency payment integration
+- **Recharts** for interactive data visualization
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check our issues page.
+
+---
+
+**Made with ❤️ by the Contapto Team**

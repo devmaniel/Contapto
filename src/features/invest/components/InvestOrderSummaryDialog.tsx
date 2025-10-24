@@ -298,8 +298,8 @@ const InvestOrderSummaryDialog: React.FC<InvestOrderSummaryDialogProps> = ({
               </button>
             </div>
 
-            {/* Show balance warning if using credits and insufficient */}
-            {paymentMethod === 'credits' && !hasEnoughCredits && (
+            {/* Show balance warning if using credits and insufficient (only after balance is loaded) */}
+            {paymentMethod === 'credits' && !loadingBalance && !hasEnoughCredits && (
               <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4 mb-4">
                 <p className="text-sm text-red-700 font-medium">
                   ⚠️ Insufficient credits. You need {(totalCost - creditsBalance).toLocaleString()} more credits.
@@ -307,8 +307,8 @@ const InvestOrderSummaryDialog: React.FC<InvestOrderSummaryDialogProps> = ({
               </div>
             )}
 
-            {/* Show remaining balance if using credits */}
-            {paymentMethod === 'credits' && hasEnoughCredits && (
+            {/* Show remaining balance if using credits (only after balance is loaded) */}
+            {paymentMethod === 'credits' && !loadingBalance && hasEnoughCredits && (
               <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-4 mb-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-semibold text-gray-700">After Purchase</span>
@@ -356,14 +356,19 @@ const InvestOrderSummaryDialog: React.FC<InvestOrderSummaryDialogProps> = ({
         <div className="sticky bottom-0 rounded-xl bg-white border-t border-gray-200 p-6">
           <button
             onClick={handlePayNow}
-            disabled={!isFormValid() || isLoading}
+            disabled={!isFormValid() || isLoading || loadingBalance}
             className={`w-full font-semibold py-4 px-6 rounded-full transition-all shadow-lg flex items-center justify-center gap-2 ${
-              !isFormValid() || isLoading
+              !isFormValid() || isLoading || loadingBalance
                 ? 'bg-gray-400 cursor-not-allowed'
                 : 'bg-primary hover:bg-primary/90 hover:shadow-xl cursor-pointer'
             }`}
           >
-            {isLoading ? (
+            {loadingBalance ? (
+              <>
+                <Loader className="w-5 h-5 text-white animate-spin" />
+                <span className="text-white">Loading Balance...</span>
+              </>
+            ) : isLoading ? (
               <>
                 <Loader className="w-5 h-5 text-white animate-spin" />
                 <span className="text-white">Processing...</span>

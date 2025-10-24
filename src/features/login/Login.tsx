@@ -16,6 +16,7 @@ import { useLogin } from "@/features/auth/hooks/useLogin"
 import { LoginErrorAlert, LoginForm, LoginSuccessDialog } from "./components"
 import { loginSchema, type LoginFormData } from "./types"
 import backgroundImage from '@/assets/background/26987170_v904-nunny-012-l.jpg'
+import ContaptoTextLogo  from "../../assets/contapto-text.svg"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -66,7 +67,8 @@ const Login = () => {
 
         <div className={cn("flex flex-col gap-6 w-full")}> 
           <Card>
-            <CardHeader className="text-center">
+            <CardHeader className="text-left">
+              <img src={ContaptoTextLogo} alt="contapto-img" className="h-5 text-white" />
               <CardTitle className="text-xl">Welcome back</CardTitle>
               <CardDescription>
                 Login with your account
