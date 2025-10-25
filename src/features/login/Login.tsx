@@ -60,10 +60,7 @@ const Login = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen max-w-md mx-auto px-4">
-        {/* Brand Name */}
-        <div className="mb-8">
-          <h1 className="text-5xl font-bold text-white tracking-tight">Contapto</h1>
-        </div>
+        
 
         <div className={cn("flex flex-col gap-6 w-full")}> 
           <Card>
